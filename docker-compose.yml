@@ -1,0 +1,50 @@
+version: "3"
+services:
+  backend:
+    container_name: backend_container
+    build:
+      context: ./backend
+    # backend_containerのポートを3000で作成
+    ports:
+      - 3000:3000
+    volumes:
+      - ./backend/src:/home/backend
+    environment:
+      - NODE_ENV_DEVELOPMENT=development
+      - NODE_ENV_PRODUCTION=production
+      - CHOKIDAR_USEPOLLING=1
+    stdin_open: true
+    tty: true
+
+  postgres:
+    container_name: postgres_container
+    build: ./postgres
+    ports:
+      - "5432:5432"
+    volumes:
+      - worksfolio-db-volume:/var/lib/postgresql/data
+    # データベースの名前やタイムゾーン、ユーザー名とパスワードを指定
+    environment:
+      TZ: "Asia/Tokyo"
+      POSTGRES_DB: worksfolio_db
+      POSTGRES_PASSWORD: password
+      POSTGRES_USER: user
+    hostname: postgres
+    restart: always
+
+  pgadmin:
+    image: dpage/pgadmin4:6.11
+    container_name: pgadmin_container
+    ports:
+      - 8080:80
+    volumes:
+      - volume-pgadmin:/var/lib/pgadmin
+    environment:
+      PGADMIN_DEFAULT_EMAIL: taku.uver102292@gmail.com
+      PGADMIN_DEFAULT_PASSWORD: password
+    depends_on:
+      - postgres
+
+volumes:
+  worksfolio-db-volume:
+  volume-pgadmin:
