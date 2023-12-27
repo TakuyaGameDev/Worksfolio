@@ -14,8 +14,11 @@ import CareerView from '../components/molecules/viewports/Career'
 import WorksView from '../components/molecules/viewports/Works'
 import loginUser from '../store/user/index'
 import CommonHeader from '../components/molecules/commons/Header'
+import routeHistory from '../store/history/route'
 
 function Main() {
+  const currentScreenId = 2
+
   const [viewType, setViewType] = useState<boolean>(VIEW_TYPE.AUTOMATIC)
   const [viewingItem, setViewingItem] = useState<number>(VIEWING_ITEMS.FIRSTLY)
   const transitionType = TRANSITION_CONDITION_TYPE.WELCOME
@@ -45,7 +48,7 @@ function Main() {
     <>
     <div><PageTransitioner type={transitionType}/></div>
     <div className='header'>
-      <CommonHeader userInfo={loginUser.getState().userInfo}/>
+      <CommonHeader userInfo={loginUser.getState().userInfo} routeHistories={routeHistory.getState().path} currentScreenId={currentScreenId}/>
     </div>
     <div className='container-main'>
       <div className='menubarGr'>

@@ -1,6 +1,7 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
 import loginUser from '../../../store/user/index'
+import HistoryNavbar from './HistoryRouteNavbar'
 
 const CommonHeader = React.memo((props: any) => {
   const navigate = useNavigate()
@@ -22,6 +23,7 @@ const CommonHeader = React.memo((props: any) => {
           </div> : ''
         }
       </div>
+      <HistoryNavbar histories={props.routeHistories} currentScreenId={props.currentScreenId} onClickLogout={onClickLogout}/>
     </>
   )
 });

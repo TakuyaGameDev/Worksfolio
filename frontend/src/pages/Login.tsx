@@ -7,9 +7,11 @@ import CommonHeader from '../components/molecules/commons/Header'
 import Button from '../components/organisms/common/button'
 import { LoginUserParams } from '../axios/types/user'
 import loginUser from '../store/user/index'
+import routeHistory from '../store/history/route'
 import {login} from '../axios/loginAxios'
 
 function Login() {
+  const currentScreenId = 1
   const navigate = useNavigate()
   const passInputRef = useRef<HTMLInputElement>(null)
   const useridInputRef = useRef<HTMLInputElement>(null)
@@ -96,7 +98,6 @@ function Login() {
       user_id: uid,
       password: pass
     }
-
     const res = await login(data)
     if(res.status != -1) {
       // redux経由でstoreにログインユーザ情報を格納
@@ -110,7 +111,7 @@ function Login() {
   return (
     <>
       <div className='header'>
-        <CommonHeader />
+        <CommonHeader routeHistories={routeHistory.getState().path} currentScreenId={currentScreenId}/>
       </div>
       <div className='container-login'>
         <div className='form'>
@@ -121,6 +122,14 @@ function Login() {
             <span style={{ color:'white' }}>{loginFailedMessage}</span>
           </div>
           <div className='form-body'>
+          <div className='input'>
+            <label htmlFor='userid-input'>userID:</label>
+            <input 
+              id='userid-input' 
+              type='text'
+              onChange={(e) => onChangeInputText(e.target)}
+              ref={useridInputRef}></input>
+            </div>
             <div className='input'>
               <label htmlFor='pass-input'>password:</label>
               <input 
@@ -129,21 +138,21 @@ function Login() {
                 onChange={(e) => onChangeInputText(e.target)}
                 ref={passInputRef}></input>
             </div>
-            <div className='input'>
-              <label htmlFor='userid-input'>userID:</label>
-              <input 
-                id='userid-input' 
-                type='text'
-                onChange={(e) => onChangeInputText(e.target)}
-                ref={useridInputRef}></input>
-            </div>
             <div className='btn-login'>
               <Button
                 disabled={btnDisabled}
                 onClickFunc={onLogin}/>
             </div>
           </div>
-          <div className='only-viewer-nav'>Click<Link to='/main'> HERE </Link>for view only</div>
+          <div className='only-viewer-nav'>Click<Link to='/main' onClick={()=>{
+            routeHistory.dispatch('PUSH', {
+              id: 2,
+              name: 'main',
+              path: '/main',
+            })
+          }}> 
+            HERE 
+          </Link>for view only</div>
         </div>
       </div>
     </>
