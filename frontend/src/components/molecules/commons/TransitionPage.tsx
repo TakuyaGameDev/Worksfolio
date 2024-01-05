@@ -2,8 +2,6 @@
 import '../../../styles/page-transition.scss'
 import {TRANSITION_CONDITION_TYPE} from '../../../enums/TYPES'
 
-import loginUser from '../../../store/user/index'
-
 function TransitionPage(props: any) {
   return (
     <>
@@ -20,7 +18,7 @@ function TransitionPage(props: any) {
                 <span>!</span>
             </p>
             <div className='accountNameBox'>
-              { loginUser.getState().userInfo.user_id ? loginUser.getState().userInfo.user_id : 'Guest' }
+              { props?.user?.user_id ? props?.user?.user_id : 'Guest' }
             </div>
           </div> : ''
         }

@@ -4,7 +4,7 @@ function Career() {
   return (
     <>
       <div className='backScreen'>
-        【CAREER】Now Preparing...
+        【MY CAREER】Now Preparing...
       </div>
     </>
   )

@@ -11,8 +11,10 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@reduxjs/toolkit": "^2.0.1",
     "@types/config": "^3.3.3",
     "@types/moment": "^2.13.0",
+    "@types/react-slick": "^0.23.13",
     "@types/winston": "^2.4.4",
     "axios": "^1.6.2",
     "config": "^3.3.9",
@@ -24,8 +26,12 @@
     "react-dom": "^18.2.0",
     "react-redux": "^9.0.4",
     "react-router-dom": "^6.20.1",
+    "react-slick": "^0.29.0",
     "redux": "^5.0.1",
+    "redux-localstorage": "^0.4.1",
+    "redux-localstorage-simple": "^2.5.1",
     "redux-persist": "^6.0.0",
+    "redux-thunk": "^3.1.0",
     "winston": "^3.11.0"
   },
   "devDependencies": {

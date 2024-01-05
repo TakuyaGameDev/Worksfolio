@@ -4,7 +4,7 @@ import { PAGE_TYPE, VIEW_TYPE, VIEWING_ITEMS } from '../../../enums/TYPES'
 function CommonMenubar(props: any) {
   return (
     <>
-      { props.pageType == PAGE_TYPE.MAIN ?
+      { PAGE_TYPE[props?.screenName].id == PAGE_TYPE.MAIN.id ?
         <div className='container-menubar'>
           <div className='buttonGr'>
               <a className={`

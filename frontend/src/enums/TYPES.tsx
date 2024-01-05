@@ -7,8 +7,16 @@ export const TRANSITION_CONDITION_TYPE = {
 
 // 画面タイプ
 export const PAGE_TYPE = {
-    LOGIN: 0,
-    MAIN: 1,
+    LOGIN: {
+        id: 1,
+        path: '/',
+        name: 'LOGIN画面',
+    },
+    MAIN: {
+        id: 2,
+        path: '/main',
+        name: 'MAIN画面',
+    },
 }
 
 // 閲覧タイプ(自動: true 手動: false)
