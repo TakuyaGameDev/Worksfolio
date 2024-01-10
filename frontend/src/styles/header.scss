@@ -1,0 +1,48 @@
+
+.box-header {
+    height: auto;
+    width: auto;
+    color: #455765;
+    margin-bottom: 2rem;
+    padding: .5%;
+    .btn-login {
+        text-align: right;
+        margin-right: 2rem;
+        font-family: 'OrkneyRegular';
+    }
+    .box-title {
+        position: relative;
+        .title {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%);
+            font-family: 'Pacifico', cursive;
+            font-size: 2rem;
+        }
+        .sub-title {
+            position: absolute;
+            display: flex;
+            top: 50%;
+            right: 18%;
+            a {
+                display: block;
+                cursor: pointer;
+                margin-right: 120px;
+                margin-top: 2rem;
+                font-family: 'OrkneyRegular';
+                background: 
+                    linear-gradient(currentColor 0 0) 
+                    0 100% /var(--d, 0) 1.5px 
+                    no-repeat;
+                transition:0.5s;
+            }
+            a:hover {
+                --d: 100%;
+                opacity: 0.5;
+            }
+        }
+        margin-bottom: 50px;
+    }
+
+}
