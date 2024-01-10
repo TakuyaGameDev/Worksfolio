@@ -6,9 +6,9 @@ export const getLoginUsers = async (req:any, res: any) => {
     let status = -1
     const data = await sqlExecuter.any(query, createParams(req.body))
     if (data.length <= 0) {
-        message = "ユーザが存在しません"
+        message = "User Not Found."
     } else {
-        message = "ログイン成功"
+        message = "【Login】success"
         status = 1
     }
     res.status(200).json({

@@ -1,13 +1,17 @@
+import React from 'react'
 import '../../../styles/header.scss'
 
 import { SELECTTYPE } from '../../../enum/TYPES'
 
-function Header(props: any) {
+export const Header = React.memo((props:any) => {
   return (
     <>
         <div className='box-header'>
             <div className='btn-login'>
-                <a onClick={ props.onClickLogin }>Login</a>
+                { props.loginUser ? 
+                    <a onClick={ props.onClickLogout }>Logout</a> :
+                    <a onClick={ props.onClickLogin }>Login</a>
+                }
             </div>
             <div className='box-title'>
                 <div className='title'>
@@ -21,6 +25,6 @@ function Header(props: any) {
         </div>
     </>
   )
-}
+})
 
 export default Header

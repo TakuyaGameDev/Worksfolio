@@ -3,7 +3,7 @@
     height: auto;
     width: auto;
     color: #455765;
-    margin-bottom: 2rem;
+    margin-bottom: 1rem;
     padding: .5%;
     .btn-login {
         text-align: right;
@@ -63,6 +63,7 @@
                 background-size: 0 1.5px;
                 background-position: left bottom;
                 background-size: 100% 1.5px;
+                opacity: 0.5;
             }
             a:hover {
                 background-size: 100% 1.5px;

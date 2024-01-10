@@ -11,7 +11,7 @@ function Modal(props: any) {
             <a className={` overlay ${ props.isOpen ? 'active' : '' }`} onClick={ props.onClickClose }></a>
             <div className={` container-modal ${ props.isOpen ? 'active' : '' }`}>
                 {
-                    props.type === MODALTYPE.LOGIN ? <Login isClose={ !props.isOpen } /> : ''
+                    props.type === MODALTYPE.LOGIN ? <Login isClose={ !props.isOpen } closeModal={ props.onClickClose } /> : ''
                 }
             </div>
         </>
