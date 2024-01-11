@@ -1,5 +1,23 @@
 .albumGritWrapper{
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
-    margin-bottom: 10px;
+    margin-bottom: 2rem;
+    .wrapper-item {
+        .title {
+            margin: 1.5rem 0;
+        }
+        img {
+            width: 500px;
+            height: 350px;
+            margin: .4rem;
+            border-radius: .5rem;
+        }
+    }
+    .box-description {
+        width: 100%;
+        height: 20%;
+    }
 }
+
+
+

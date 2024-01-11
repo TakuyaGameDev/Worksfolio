@@ -1,6 +1,6 @@
 import { sqlExecuter, createParams } from "./database";
 
-export const getLoginUsers = async (req:any, res: any) => {
+export const getLoginUsers = async (req: any, res: any) => {
     const query = "select * from users where user_id = $1 AND password = $2";
     let message = ""
     let status = -1

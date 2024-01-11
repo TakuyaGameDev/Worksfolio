@@ -7,3 +7,7 @@ export const SELECTTYPE = {
 export const MODALTYPE = {
     LOGIN : 1,
 }
+
+export const PAGINATIONTYPE = {
+    WORKS: 1,
+}

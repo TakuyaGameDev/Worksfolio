@@ -1,7 +1,12 @@
- export type Album = {
-    albumId: number,
-    id: number,
-    title: string,
-    url: string,
-    thumbnailUrl: string
- }
+export type Works = {
+   id: number
+   user_id: string
+   title: string
+   image_url: string[]
+   site_url: string
+   dev_periods: Object
+   descriptions: Object
+   created_at: Date
+   updated_at: Date
+   deleted_at: Date
+}
