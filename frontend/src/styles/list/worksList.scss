@@ -1,10 +1,10 @@
-.albumGritWrapper{
+.worksGritWrapper{
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     margin-bottom: 2rem;
     .wrapper-item {
         .title {
-            margin: 1.5rem 0;
+            margin: .5rem 0;
         }
         img {
             width: 500px;

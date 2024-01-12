@@ -3,7 +3,7 @@
     height: auto;
     width: auto;
     color: #455765;
-    margin-bottom: 1rem;
+    margin-bottom: 3rem;
     padding: .5%;
     .btn-login {
         text-align: right;
@@ -32,6 +32,96 @@
     }
     .box-title {
         position: relative;
+        .search-user-box {
+            position: absolute;
+            top: 50%;
+            left: 16%;
+            width: 20%;
+            label {
+                font-family: 'OrkneyRegular';
+                font-size: 18px;
+                font-weight: 300;
+                color: #495057;
+                position: absolute;
+                left: 0px;
+                top: 30px;
+                pointer-events: none;
+                -webkit-transition:all .3s ease; 
+                transition: all .3s ease;
+            }
+            input {
+                position: relative;
+                margin-top: 2rem;
+                width: 100%;
+                outline: 0;
+                border: transparent;
+                border-bottom: 1px solid #cdcdcd;
+                background-color: transparent;
+                color: #495057;
+                font-size: 1.2rem;
+                font-weight: 400;
+                line-height: 1.4rem;
+                box-sizing: border-box;
+                appearance: none;
+                +span {
+                    position: absolute;
+                    bottom: 0;
+                    left: 0;
+                    width: 0;
+                    /* 下線を隠す */
+                    height: 1px;
+                    background-color: #495057;
+                    transition: .3s;
+                    transform: translateX(0%);
+                }
+            }
+            input:focus+span {
+                width: 100%;
+            }
+            input:focus ~ label,
+            input.fullfilled ~ label {
+                opacity: 0.5;
+                -webkit-transform: scale(0.66);
+                -ms-transform : scale(0.66);
+                transform: scale(0.66);
+                top: 10px;
+                left: -18px;
+            }
+        }
+        .search-user-btn {
+            position: absolute;
+            top: 27px;
+            left: 37%;
+        }
+        .search-user-btn,
+        .search-user-btn:after,
+        .search-user-btn:before {
+            -webkit-transition: all 300ms ease-in-out;
+            transition: all 300ms ease-in-out;
+        }
+        .search-user-btn {
+            font-family: 'OrkneyRegular';
+            cursor: pointer;
+            padding: 3px 10px;
+            width: fit-content;
+            border-radius: 5px;
+            box-shadow: 0 2px 2px rgba(0,0,0,.2) inset, 0 0 0 rgba(0,0,0,0);
+            margin: 0 auto;
+            border: none;
+            pointer-events: none;
+        }
+        .search-user-btn.active {
+            pointer-events: auto;
+            box-shadow: 0 0 0 rgba(0,0,0,0) inset,
+                0 2px 2px rgba(0,0,0,.1),
+                0 4px 4px rgba(0,0,0,.1),
+                0 8px 8px rgba(0,0,0,.1);
+            background-color: #dcdcdc;
+        }
+        .search-user-btn.active:active {
+            background: rgba(0,0,0,.02);
+            box-shadow: 0 -2px 2px rgba(0,0,0,.1) inset, 0 0 0 rgba(0,0,0,0);
+        }
         .title {
             position: absolute;
             top: 50%;

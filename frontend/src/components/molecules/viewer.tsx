@@ -3,26 +3,36 @@ import React,{ useEffect, useState } from 'react'
 import { Works } from '../../type'
 import { PAGINATIONTYPE } from '../../enum/TYPES'
 
-import { getWorksByUserId } from '../../axios/worksAxios'
+import { getWorks, getWorksByUserId } from '../../axios/worksAxios'
 
 import '../../styles/viewer.scss'
 import Pagination from './commons/Pagination'
 
 export const Viewer = React.memo((props:any) => {
-  const [albums, setAlbums] = useState<Works[]>([])
+  const [works, setWorks] = useState<Works[]>([])
 
   useEffect(() => {
-    const getAlbums = async() => {
-      const res = await getWorksByUserId({ user_id: null })
-      setAlbums(res.data)
+    const getWorksInViewer = async() => {
+      if(props.loginUser) {
+        console.log('getWorksByUserId')
+        console.log(props.loginUser.user_id)
+        const res = await getWorksByUserId({ user_id: props.loginUser.user_id })
+        console.log(res.data)
+        setWorks(res.data)
+      } else {
+        console.log('getWorks')
+        const res = await getWorks()
+        console.log(res.data)
+        setWorks(res.data)
+      }
     }
-    getAlbums()
-  },[])
+    getWorksInViewer()
+  },[props.loginUser])
 
   return (
     <>
         <div className='box-viewer'>
-            <Pagination type={ PAGINATIONTYPE.WORKS } albums={albums} />
+            <Pagination type={ PAGINATIONTYPE.WORKS } works={works} />
         </div>
     </>
   )

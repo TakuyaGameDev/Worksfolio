@@ -125,7 +125,7 @@ export const Login = React.memo((props:any) => {
             </div>
           </div>
           <button
-            className='btn'
+            className={`btn ${ userid !== '' && password !== '' ? 'active' : '' }`}
             onClick={ onClickLogin }
           >
             Login

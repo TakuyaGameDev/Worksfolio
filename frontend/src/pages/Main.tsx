@@ -2,8 +2,7 @@ import { useState, useEffect } from 'react'
 
 import PageTranditioner from '../components/molecules/commons/TransitionPage'
 import CommonHeader from '../components/molecules/commons/Header'
-import AdminViewer from '../components/molecules/admin/viewer'
-import GuestViewer from '../components/molecules/viewer'
+import Viewer from '../components/molecules/viewer'
 
 import Modal from '../components/molecules/commons/Modal'
 import { getLocalStorageValue, resetLocalStorage } from '../store'
@@ -42,7 +41,7 @@ function Main() {
       <CommonHeader selectType={ selectType } changeFunc={ changeSelectType } onClickLogin={ onClickLogin } onClickLogout={ onClickLogout } loginUser={ user } />
       <Modal isOpen={isOpenLoginModal} onClickClose={ onClickCloseModal } type={ MODALTYPE.LOGIN }/>
       <div className='container-main'>
-        { user ? <AdminViewer /> : <GuestViewer /> }
+        <Viewer loginUser={user} />
       </div>
     </>
   )

@@ -3,29 +3,28 @@ import React,{ useState } from "react"
 import ReactPaginate from 'react-paginate'
 
 import '../../../styles/pagination.scss'
-import AlbumList from "../../organisms/list/albumList"
+import AlbumList from "../../organisms/list/worksList"
 
 const Pagination = React.memo((props:any) => {
-    const { albums } = props
+    const { works } = props
 
     const itemsPerPage = 3
     const [itemsOffset, setItemsOffset] = useState<number>(0)
     const endOffset = itemsOffset + itemsPerPage
 
-    console.log(albums)
-    const currentAlbums = albums.slice(itemsOffset, endOffset)
+    const currentWorks = works.slice(itemsOffset, endOffset)
 
-    const pageCount = Math.ceil(albums.length / itemsPerPage)
+    const pageCount = Math.ceil(works.length / itemsPerPage)
 
     const handlePageClick = (e: { selected: number }) => {
-        const newOffset = (e.selected * itemsPerPage) % albums.length
+        const newOffset = (e.selected * itemsPerPage) % works.length
         setItemsOffset(newOffset)
     }
 
     return (
         <>
-            <div className="albumWrapper">
-                <AlbumList albums={currentAlbums} />
+            <div className="worksWrapper">
+                <AlbumList works={currentWorks} />
                 <div className="paginateWrapper">
                     <ReactPaginate
                         nextLabel="next >"

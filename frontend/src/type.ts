@@ -6,7 +6,4 @@ export type Works = {
    site_url: string
    dev_periods: Object
    descriptions: Object
-   created_at: Date
-   updated_at: Date
-   deleted_at: Date
 }

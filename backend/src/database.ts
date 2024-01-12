@@ -24,5 +24,6 @@ export const createParams = (reqBody: any) => {
 	keys.forEach((value: any) => {
 		params.push(value)
 	});
+	console.log(params)
 	return params
 }
