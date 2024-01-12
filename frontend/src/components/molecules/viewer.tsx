@@ -15,7 +15,6 @@ export const Viewer = React.memo((props:any) => {
     const getWorksInViewer = async() => {
       if(props.loginUser) {
         console.log('getWorksByUserId')
-        console.log(props.loginUser.user_id)
         const res = await getWorksByUserId({ user_id: props.loginUser.user_id })
         console.log(res.data)
         setWorks(res.data)
