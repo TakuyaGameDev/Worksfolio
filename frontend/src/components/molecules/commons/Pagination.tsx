@@ -24,7 +24,7 @@ const Pagination = React.memo((props:any) => {
     return (
         <>
             <div className="worksWrapper">
-                <AlbumList works={currentWorks} />
+                <AlbumList works={currentWorks} onClickWorks={props.onClickWorks} />
                 <div className="paginateWrapper">
                     <ReactPaginate
                         nextLabel="next >"

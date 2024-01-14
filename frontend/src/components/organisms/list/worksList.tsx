@@ -1,4 +1,4 @@
-import React from 'react'
+import React,{ useState } from 'react'
 import '../../../styles/list/worksList.scss'
 
 const albumList = React.memo((props: any) => {
@@ -16,7 +16,18 @@ const albumList = React.memo((props: any) => {
                         <div key={ item.id } className='wrapper-item'>
                             <div className='title'>{ item.title }</div>
                             <div className='creatorName'>作成者：【{ item.user_id }】</div>
-                            <img src={item.image_url[0]} alt="works" />
+                            <figure className='box-img'>
+                                <img
+                                    src={item.image_url[0]}
+                                    onClick={ () => { props.onClickWorks(item.id) } }
+                                    alt="works" />
+                                <figcaption
+                                    className='show-nav-text'
+                                    onClick={ props.onClickWorks }
+                                >
+                                    Show Detail.
+                                </figcaption>
+                            </figure>
                             <div className='dev-periods'>
                                 開発期間
                                 <div className='from'>

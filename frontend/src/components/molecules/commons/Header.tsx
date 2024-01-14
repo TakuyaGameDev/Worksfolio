@@ -1,10 +1,18 @@
-import React,{ useState } from 'react'
+import React,{ useState, useEffect } from 'react'
 import '../../../styles/header.scss'
 
 import { SELECTTYPE } from '../../../enum/TYPES'
 
 export const Header = React.memo((props:any) => {
     const [fullfilled, setFullfilled] = useState<boolean>(false)
+    const [searchUser, setSearchUser] = useState<string>('')
+
+    const [searchAll, setSearchAll] = useState<boolean>(true)
+
+    useEffect(() => {
+        setFullfilled(searchUser.length > 0)
+    },[searchUser])
+
     return (
         <>
             <div className='box-header'>
@@ -20,12 +28,28 @@ export const Header = React.memo((props:any) => {
                             className={ fullfilled ? 'fullfilled' : '' }
                             id="creatorSearcher"
                             onChange={ (e: any) => {
-                                setFullfilled(e.target.value.length > 0)
-                            }}/>
+                                setSearchUser(e.target.value)
+                            }}
+                            value={ searchUser }
+                            />
                         <span></span>
                         <label htmlFor='creatorSearcher'>Search Creator</label>
                     </div>
-                    <button className={`search-user-btn ${ fullfilled ? 'active' : '' }`}>Search</button>
+                    <button
+                        className={`search-user-btn ${ fullfilled ? 'active' : '' }`}
+                        onClick={ () => {
+                            props.onClickSearchUser(searchUser)
+                            setSearchAll(false)
+                        }}
+                    >Search</button>
+                    <button
+                        className={`search-user-btn__clear ${ searchAll ? 'disabled' : '' }`}
+                        onClick={ () => {
+                            setSearchUser('')
+                            setSearchAll(true)
+                            props.onClickSearchUser('')
+                        }}
+                    >Clear</button>
                     <div className='title'>
                         MyPortfolio
                     </div>

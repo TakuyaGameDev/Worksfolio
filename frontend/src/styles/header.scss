@@ -35,7 +35,7 @@
         .search-user-box {
             position: absolute;
             top: 50%;
-            left: 16%;
+            left: 10%;
             width: 20%;
             label {
                 font-family: 'OrkneyRegular';
@@ -91,7 +91,7 @@
         .search-user-btn {
             position: absolute;
             top: 27px;
-            left: 37%;
+            left: 31%;
         }
         .search-user-btn,
         .search-user-btn:after,
@@ -102,6 +102,7 @@
         .search-user-btn {
             font-family: 'OrkneyRegular';
             cursor: pointer;
+            background: rgba(0,0,0,.02);
             padding: 3px 10px;
             width: fit-content;
             border-radius: 5px;
@@ -109,6 +110,29 @@
             margin: 0 auto;
             border: none;
             pointer-events: none;
+        }
+        .search-user-btn__clear {
+            position: absolute;
+            top: 27px;
+            left: 35%;
+            font-family: 'OrkneyRegular';
+            cursor: pointer;
+            padding: 3px 10px;
+            width: fit-content;
+            border-radius: 5px;
+            margin: 0 auto;
+            border: none;
+            pointer-events: auto;
+            box-shadow: 0 0 0 rgba(0,0,0,0) inset,
+                0 2px 2px rgba(0,0,0,.1),
+                0 4px 4px rgba(0,0,0,.1),
+                0 8px 8px rgba(0,0,0,.1);
+            background-color: #dcdcdc;
+        }
+        .search-user-btn__clear.disabled {
+            pointer-events: none;
+            box-shadow: 0 2px 2px rgba(0,0,0,.2) inset, 0 0 0 rgba(0,0,0,0);
+            background: rgba(0,0,0,.02);
         }
         .search-user-btn.active {
             pointer-events: auto;
