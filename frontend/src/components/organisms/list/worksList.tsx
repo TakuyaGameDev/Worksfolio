@@ -18,7 +18,7 @@ const albumList = React.memo((props: any) => {
                             <div className='creatorName'>作成者：【{ item.user_id }】</div>
                             <figure className='box-img'>
                                 <img
-                                    src={item.image_url[0]}
+                                    src={item.image_url}
                                     onClick={ () => { props.onClickWorks(item.id) } }
                                     alt="works" />
                                 <figcaption

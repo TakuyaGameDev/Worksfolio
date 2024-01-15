@@ -1,4 +1,4 @@
-import React,{ useState } from "react"
+import React,{ useState, useEffect } from "react"
 
 import ReactPaginate from 'react-paginate'
 
@@ -7,6 +7,10 @@ import AlbumList from "../../organisms/list/worksList"
 
 const Pagination = React.memo((props:any) => {
     const { works } = props
+
+    useEffect(() => {
+        setItemsOffset(0)
+    },[works])
 
     const itemsPerPage = 3
     const [itemsOffset, setItemsOffset] = useState<number>(0)

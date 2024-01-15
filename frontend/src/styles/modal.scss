@@ -8,12 +8,12 @@
     background-color: rgba(0,0,0,.5);
     opacity: 0;
     pointer-events: none;
-    transition: 1s;
+    transition: .5s;
 }
 
 .overlay.active {
     opacity: 1;
-    transition: 1s;
+    transition: .5s;
     pointer-events: auto;
     z-index: 999;
 }
@@ -28,7 +28,7 @@
     text-align: center;
     opacity: 0; 
     pointer-events: none;
-    transition: 1s;
+    transition: .5s;
     width: auto;
     border-radius: 1rem;
     background-color: #f0f8ff;
@@ -37,6 +37,6 @@
 
 .container-modal.active {
     opacity: 1;
-    transition: 1s;
+    transition: .5s;
     pointer-events: auto;
 }

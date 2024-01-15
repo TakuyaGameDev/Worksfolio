@@ -10,23 +10,29 @@ export const Viewer = React.memo((props:any) => {
 
   useEffect(() => {
     const getWorksInViewer = async() => {
+      console.log('getWorks')
       if(props.loginUser) {
-        console.log('getWorksByUserId')
-        const res = await getWorksByUserId({ user_id: props.loginUser.user_id })
+        const res = await getWorksByUserId({ user_id: props.searchUserId ? props.searchUserId : props.loginUser.user_id })
         console.log(res.data)
         props.setWorks(res.data)
       } else {
-        console.log('getWorks')
-        const res = await getWorks()
-        console.log(res.data)
-        props.setWorks(res.data)
+        if(props.searchUserId){
+          const res = await getWorksByUserId({ user_id: props.searchUserId })
+          console.log(res.data)
+          props.setWorks(res.data)
+        } else {
+          const res = await getWorks()
+          console.log(res.data)
+          props.setWorks(res.data)
+        }
       }
     }
     getWorksInViewer()
-  },[props.loginUser])
+  },[props.loginUser, props.searchUserId])
 
   useEffect(() => {
     const searchWorks = async() => {
+      console.log('searchWorks')
       if(props.searchUserId === '') {
         const res = await getWorks()
         props.setWorks(res.data)

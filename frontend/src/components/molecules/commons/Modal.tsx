@@ -18,7 +18,7 @@ function Modal(props: any) {
                         closeModal={ props.onClickClose }
                     />
                     :
-                    props.type === MODALTYPE.WORKSDETAIL ?
+                    props.type === MODALTYPE.WORKSDETAIL && props.selectWorks ?
                     <WorksDetail
                         selectWorks={ props.selectWorks }
                         isClose={ !props.isOpen }

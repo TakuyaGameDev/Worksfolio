@@ -18,12 +18,10 @@ export const sqlExecuter = pgp(config.db);
 
 // クエリパラメーター作成
 export const createParams = (reqBody: any) => {
-	console.log(reqBody)
 	let keys = Object.values(reqBody)
 	let params: any[] = []
 	keys.forEach((value: any) => {
 		params.push(value)
 	});
-	console.log(params)
 	return params
 }
