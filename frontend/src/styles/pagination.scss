@@ -2,7 +2,43 @@
     width: 100%;
     padding: 1rem;
     .paginateWrapper{
+        width: fit-content;
         display: flex;
-        justify-content: center;
+        margin: 0 auto;
+    }
+    .pre-page-btn {
+        padding: 7px 13px;
+        background-color: white;
+        margin-right: 10px;
+        cursor: pointer;
+    }
+    .pre-page-btn:active {
+        background-color: rgba(21, 80, 230, 0.5);
+    }
+    .pre-page-btn.disabled {
+        pointer-events: none;
+    }
+    .next-page-btn {
+        padding: 7px 13px;
+        background-color: white;
+        margin-left: 10px;
+        cursor: pointer;
+    }
+    .next-page-btn:active {
+        background-color: rgba(21, 80, 230, 0.5);
+    }
+    .next-page-btn.disabled {
+        pointer-events: none;
+    }
+    .page-item {
+        padding: 7px 13px;
+        background-color: white;
+        margin-left: 5px;
+        cursor: pointer;
+        transition: all .3s;
+    }
+    .page-item.active{
+        transition: all .5s;
+        background-color: rgba(255,105,212,0.5);
     }
 }

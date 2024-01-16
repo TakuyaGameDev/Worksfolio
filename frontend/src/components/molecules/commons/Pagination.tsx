@@ -4,6 +4,7 @@ import ReactPaginate from 'react-paginate'
 
 import '../../../styles/pagination.scss'
 import AlbumList from "../../organisms/list/worksList"
+import Pagenator from "../../molecules/commons/Pagenator"
 
 const Pagination = React.memo((props:any) => {
     const { works } = props
@@ -20,8 +21,15 @@ const Pagination = React.memo((props:any) => {
 
     const pageCount = Math.ceil(works.length / itemsPerPage)
 
-    const handlePageClick = (e: { selected: number }) => {
-        const newOffset = (e.selected * itemsPerPage) % works.length
+    const handlePageClick = (typeString: string, selected: number = 0) => {
+        let newOffset = 0
+        if(typeString === 'pageClick') {
+            newOffset = (selected * itemsPerPage) % works.length
+        } else if(typeString === 'preClick') {
+            newOffset = itemsOffset - itemsPerPage
+        } else if(typeString === 'nextClick') {
+            newOffset = itemsOffset + itemsPerPage
+        }
         setItemsOffset(newOffset)
     }
 
@@ -30,24 +38,12 @@ const Pagination = React.memo((props:any) => {
             <div className="worksWrapper">
                 <AlbumList works={currentWorks} onClickWorks={props.onClickWorks} />
                 <div className="paginateWrapper">
-                    <ReactPaginate
-                        nextLabel="next >"
-                        onPageChange={handlePageClick}
-                        pageRangeDisplayed={3}
-                        marginPagesDisplayed={2}
+                    <Pagenator
                         pageCount={pageCount}
-                        previousLabel="< previous"
-                        pageClassName="page-item"
-                        pageLinkClassName="page-link"
-                        previousClassName="page-item"
-                        previousLinkClassName="page-link"
-                        nextClassName="page-item"
-                        nextLinkClassName="page-link"
-                        breakLabel="..."
-                        breakClassName="page-item"
-                        breakLinkClassName="page-link"
-                        containerClassName="pagination"
-                        activeClassName="active"
+                        pageOffset={itemsOffset}
+                        perPage={itemsPerPage}
+                        itemLength={works.length}
+                        onClickChange={handlePageClick}
                     />
                 </div>
             </div>

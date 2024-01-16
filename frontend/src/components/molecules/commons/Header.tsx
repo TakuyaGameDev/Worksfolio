@@ -38,6 +38,7 @@ export const Header = React.memo((props:any) => {
                     <button
                         className={`search-user-btn ${ fullfilled ? 'active' : '' }`}
                         onClick={ () => {
+                            
                             props.onClickSearchUser(searchUser)
                             setSearchAll(false)
                         }}
