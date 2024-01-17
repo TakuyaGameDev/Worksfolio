@@ -4,26 +4,26 @@ import '../../../styles/header.scss'
 import { SELECTTYPE } from '../../../enum/TYPES'
 
 export const Header = React.memo((props:any) => {
-    const [fullfilled, setFullfilled] = useState<boolean>(false)
-    const [searchUser, setSearchUser] = useState<string>('')
+    // const [fullfilled, setFullfilled] = useState<boolean>(false)
+    // const [searchUser, setSearchUser] = useState<string>('')
 
-    const [searchAll, setSearchAll] = useState<boolean>(true)
+    // const [searchAll, setSearchAll] = useState<boolean>(true)
 
-    useEffect(() => {
-        setFullfilled(searchUser.length > 0)
-    },[searchUser])
+    // useEffect(() => {
+    //     setFullfilled(searchUser.length > 0)
+    // },[searchUser])
 
     return (
         <>
             <div className='box-header'>
-                <div className='btn-login'>
+                {/* <div className='btn-login'>
                     { props.loginUser ? 
                         <a onClick={ props.onClickLogout }>Logout</a> :
                         <a onClick={ props.onClickLogin }>Login</a>
                     }
-                </div>
+                </div> */}
                 <div className='box-title'>
-                    <div className='search-user-box'>
+                    {/* <div className='search-user-box'>
                         <input
                             className={ fullfilled ? 'fullfilled' : '' }
                             id="creatorSearcher"
@@ -50,7 +50,7 @@ export const Header = React.memo((props:any) => {
                             setSearchAll(true)
                             props.onClickSearchUser('')
                         }}
-                    >Clear</button>
+                    >Clear</button> */}
                     <div className='title'>
                         MyPortfolio
                     </div>

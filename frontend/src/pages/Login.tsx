@@ -7,7 +7,7 @@ import { useLocalStorage } from '../store'
 
 import '../styles/login.scss'
 
-
+// Login機能は使用しない
 export const Login = React.memo((props:any) => {
   const [userid, setUserid] = useState<string>('')
   const [password, setPassword] = useState<string>('')

@@ -20,17 +20,19 @@ function Pagenator(props: any) {
     return (
         <>
             <div className='paginateWrapper'>
-                <div
-                    className={`pre-page-btn ${props.pageOffset <= 0 ? 'disabled' : '' }`}
-                    onClick={() => props.onClickChange('preClick') }
-                >previous</div>
-                {
-                    pages()
-                }
-                <div
-                    className={`next-page-btn ${props.pageOffset >= (((props.pageCount - 1) * props.perPage) % props.itemLength) ? 'disabled' : '' }`}
-                    onClick={() => props.onClickChange('nextClick') }
-                >next</div>
+                <div className='paginator'>
+                    <div
+                        className={`pre-page-btn ${props.pageOffset <= 0 ? 'disabled' : '' }`}
+                        onClick={() => props.onClickChange('preClick') }
+                    ><span>{ '« ' }</span>Prev</div>
+                    {
+                        pages()
+                    }
+                    <div
+                        className={`next-page-btn ${props.pageOffset >= (((props.pageCount - 1) * props.perPage) % props.itemLength) ? 'disabled' : '' }`}
+                        onClick={() => props.onClickChange('nextClick') }
+                    >Next<span>{ ' »' }</span></div>
+                </div>
             </div>
         </>
     )

@@ -1,17 +1,21 @@
 .worksGritWrapper{
     display: grid;
+    justify-items: center;
+    align-items: center;
     grid-template-columns: 1fr 1fr 1fr;
-    margin-bottom: 2rem;
+    margin-bottom: 1rem;
     .wrapper-item {
         .title {
             margin: .5rem 0;
         }
         .box-img {
             position: relative;
+            transition: all .3s;
+            margin-top: .5rem;
+            width: fit-content;
             img {
-                width: 500px;
-                height: 350px;
-                margin: .4rem;
+                width: 90%;
+                height: 100%;
                 border-radius: .5rem;
                 border: 2px solid #180614;
                 cursor: pointer;
@@ -36,6 +40,11 @@
                 cursor: pointer;
                 pointer-events: none;
             }
+        }
+        .box-img:hover {
+            transition: all .3s;
+            opacity: .5;
+            scale: 102%;
         }
         .box-img:hover .show-nav-text {
             opacity: .5;

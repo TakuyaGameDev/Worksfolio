@@ -5,8 +5,7 @@ export const SELECTTYPE = {
 }
 
 export const MODALTYPE = {
-    LOGIN: 1,
-    WORKSDETAIL: 2,
+    WORKSDETAIL: 1,
 }
 
 export const PAGINATIONTYPE = {

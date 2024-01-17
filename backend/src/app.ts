@@ -1,7 +1,7 @@
 import express, { Request, Response } from "express";
 
 import { getLoginUsers } from './usersEntity'
-import { getWorks, getWorksByUserId } from "./worksEntity"
+import { getWorks } from "./worksEntity"
 
 const app = express();
 // ポート番号はdocker-compose.ymlにあるnode_containerのポート番号を指定します
@@ -18,6 +18,7 @@ app.use((req, res, next) => {
   next();
 });
 
+// Login機能は使用しない
 // get user
 app.post("/getLoginUser", (req: Request, res: Response) => {
     res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3001')
@@ -28,11 +29,6 @@ app.post("/getLoginUser", (req: Request, res: Response) => {
 app.post("/getWorks", (req: Request, res: Response) => {
   res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3001')
   getWorks(res)
-});
-// get works by user_id
-app.post("/getWorksByUserId", (req: Request, res: Response) => {
-  res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3001')
-  getWorksByUserId(req, res)
 });
 
 app.listen(port, () => {

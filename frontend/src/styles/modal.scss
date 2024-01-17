@@ -20,11 +20,11 @@
 
 .container-modal {
     position: absolute;
-    top: 160px;
+    top: 130px;
     left: 50%;
+    transform: translateX(-50%);
     background-color: #fff;
     padding: 40px;
-    transform: translateX(-50%);
     text-align: center;
     opacity: 0; 
     pointer-events: none;

@@ -3,7 +3,7 @@ import React,{ useState, useEffect } from "react"
 import ReactPaginate from 'react-paginate'
 
 import '../../../styles/pagination.scss'
-import AlbumList from "../../organisms/list/worksList"
+import WorksList from "../../organisms/list/worksList"
 import Pagenator from "../../molecules/commons/Pagenator"
 
 const Pagination = React.memo((props:any) => {
@@ -36,7 +36,7 @@ const Pagination = React.memo((props:any) => {
     return (
         <>
             <div className="worksWrapper">
-                <AlbumList works={currentWorks} onClickWorks={props.onClickWorks} />
+                <WorksList works={currentWorks} onClickWorks={props.onClickWorks} />
                 <div className="paginateWrapper">
                     <Pagenator
                         pageCount={pageCount}

@@ -13,7 +13,21 @@ export const WorksDetail = React.memo((props:any) => {
         <>
             <div className='container-works-detail'>
                 <div>{ props.selectWorks.title }</div>
-                <div>{ props.selectWorks.user_id }</div>
+                {
+                    props.selectWorks.details.length > 0 ? 
+                    <div className='screens-image-box'>
+                    {
+                        props.selectWorks.details.map((item: any) => (
+                            <>
+                                {
+                                    item.url ? <img src={ item.url } /> : ''
+                                }
+                                
+                            </>
+                        ))
+                    }
+                    </div> : <div className='screens-image-box'></div>
+                }
             </div>
         </>
     )

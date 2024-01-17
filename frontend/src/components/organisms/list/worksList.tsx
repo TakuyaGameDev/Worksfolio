@@ -1,7 +1,7 @@
 import React,{ useState } from 'react'
 import '../../../styles/list/worksList.scss'
 
-const albumList = React.memo((props: any) => {
+const worksList = React.memo((props: any) => {
     const { works } = props
     return (
         <div className='worksGritWrapper'>
@@ -15,7 +15,6 @@ const albumList = React.memo((props: any) => {
                     <>
                         <div key={ item.id } className='wrapper-item'>
                             <div className='title'>{ item.title }</div>
-                            <div className='creatorName'>作成者：【{ item.user_id }】</div>
                             <figure className='box-img'>
                                 <img
                                     src={item.image_url}
@@ -28,23 +27,6 @@ const albumList = React.memo((props: any) => {
                                     Show Detail.
                                 </figcaption>
                             </figure>
-                            <div className='dev-periods'>
-                                開発期間
-                                <div className='from'>
-                                    <span>開発開始日：</span>{ item.dev_periods.from }
-                                </div>
-                                <div className='to'>
-                                    <span>開発終了日：</span>{ item.dev_periods.to }
-                                </div>
-                            </div>
-                            <div className='box-description'>
-                                説明：
-                                {
-                                    Object.keys(item.descriptions).length  !== 0 ?
-                                    <span>{ item.descriptions.main }</span>
-                                    : ''
-                                }
-                            </div>
                         </div>
                     </>
                 ))
@@ -53,4 +35,4 @@ const albumList = React.memo((props: any) => {
     )
 })
 
-export default albumList
+export default worksList
