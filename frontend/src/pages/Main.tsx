@@ -14,35 +14,14 @@ import '../styles/main.scss'
 
 function Main() {
   const [selectType, setSelectType] = useState<number>(SELECTTYPE.WORKS)
-  const [isOpenLoginModal, setIsOpenLoginModal] = useState<boolean>(false)
   const [isOpenWorksDetailModal, setIsOpenWorksDetailModal] = useState<boolean>(false)
-  const [searchUserId, setSearchUserId] = useState<string>('')
 
   const [works, setWorks] = useState<Works[]>([])
   const [selectWorks, setSelectWorks] = useState<Works>()
   const user = getLocalStorageValue('user')
 
-  const navigator = useNavigate()
-
   const changeSelectType = (type: number) => {
     setSelectType(type)
-  }
-
-  const onClickLogin = () => {
-    setIsOpenLoginModal(true)
-  }
-
-  const onClickLogout = () => {
-    resetLocalStorage('user')
-    navigator('/')
-  }
-
-  const onClickCloseLoginModal = () => {
-    setIsOpenLoginModal(false)
-  }
-
-  const onClickSearchUser = (searchUser: string) => {
-    setSearchUserId(searchUser)
   }
 
   const onClickWorks = (worksId: number) => {
@@ -60,30 +39,22 @@ function Main() {
       <PageTranditioner loginUser={ user } />
       <CommonHeader
         selectType={ selectType } 
-        changeFunc={ changeSelectType } 
-        onClickLogin={ onClickLogin } 
-        onClickLogout={ onClickLogout } 
-        onClickSearchUser={ onClickSearchUser }
-        loginUser={ user } />
-      <Modal
-        isOpen={isOpenLoginModal}
-        onClickClose={ onClickCloseLoginModal }
-        type={ MODALTYPE.LOGIN }
+        changeFunc={ changeSelectType }
       />
       <div className='container-main'>
         <Viewer
           setWorks={ setWorks }
           works={ works }
-          loginUser={user}
-          searchUserId={ searchUserId }
           onClickWorks={ onClickWorks }
         />
-        <Modal
-          selectWorks={ selectWorks }
-          isOpen={isOpenWorksDetailModal}
-          onClickClose={ onClickCloseWorksDetailModal }
-          type={ MODALTYPE.WORKSDETAIL }
-        />
+        {
+          <Modal
+            selectWorks={ selectWorks }
+            isOpen={isOpenWorksDetailModal}
+            onClickClose={ onClickCloseWorksDetailModal }
+            type={ MODALTYPE.WORKSDETAIL }
+          />
+        }
       </div>
     </>
   )

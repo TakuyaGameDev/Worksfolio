@@ -41,6 +41,9 @@
                 pointer-events: none;
             }
         }
+        .box-img.selected {
+            transform: scale(0);
+        }
         .box-img:hover {
             transition: all .3s;
             opacity: .5;

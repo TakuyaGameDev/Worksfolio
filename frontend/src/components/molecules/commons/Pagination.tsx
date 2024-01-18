@@ -36,7 +36,10 @@ const Pagination = React.memo((props:any) => {
     return (
         <>
             <div className="worksWrapper">
-                <WorksList works={currentWorks} onClickWorks={props.onClickWorks} />
+                <WorksList
+                    works={currentWorks}
+                    onClickWorks={props.onClickWorks}
+                />
                 <div className="paginateWrapper">
                     <Pagenator
                         pageCount={pageCount}

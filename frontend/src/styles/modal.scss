@@ -22,21 +22,21 @@
     position: absolute;
     top: 130px;
     left: 50%;
-    transform: translateX(-50%);
+    transform: translate(-50%,-300%);
     background-color: #fff;
-    padding: 40px;
     text-align: center;
-    opacity: 0; 
     pointer-events: none;
-    transition: .5s;
-    width: auto;
+    transition: transform .5s;
+    width: fit-content;
+    height: fit-content;
     border-radius: 1rem;
     background-color: #f0f8ff;
     z-index: 1000;
+    padding: 30px;
 }
 
 .container-modal.active {
-    opacity: 1;
-    transition: .5s;
+    transform: translate(-50%, 0%);
+    transition: transform 0.5s;
     pointer-events: auto;
 }
