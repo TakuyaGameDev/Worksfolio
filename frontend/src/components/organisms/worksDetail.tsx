@@ -1,6 +1,9 @@
 import React,{ useState, useEffect, useRef } from 'react'
 
+import Pagination from '../molecules/commons/Pagination'
+
 import '../../styles/worksDetail.scss'
+import { PAGINATIONTYPE } from '../../enum/TYPES'
 
 type Details = {
     screen_url: string
@@ -32,20 +35,22 @@ export const WorksDetail = React.memo((props:any) => {
 
     useEffect(() => {
         resetDetail()
-    },[props.selectWorks])
+    },[props.selectWorks,props.isClose])
 
     return (
         <>
             <div className='container-works-detail'>
                 <div className='left-pane'>
                     <div className='title'>
-                        タイトル：<span>{props.selectWorks.title}</span>
+                        <div className='label'>タイトル</div>
+                        <span>{props.selectWorks.title}</span>
                     </div>
                     <div className='dev-periods'>
-                        開発期間：<span>{props.selectWorks.dev_periods['from']} ~ {props.selectWorks.dev_periods['to']}</span>
+                        <div className='label'>開発期間</div>
+                        <span>{props.selectWorks.dev_periods['from']} ~ {props.selectWorks.dev_periods['to']}</span>
                     </div>
                     <div className='descriptions'>
-                        実装内容：
+                        <div className='label'>各画面での実装詳細</div>
                         {
                             selectedDetail.descriptions.map((description: any) => (
                                 <div className='des-item'>
@@ -56,26 +61,13 @@ export const WorksDetail = React.memo((props:any) => {
                     </div>
                 </div>
                 <div className='right-pane'>
-                {
-                    props.selectWorks.details.length > 0 ? 
                     <div className='screens-image-box'>
-                    {
-                        props.selectWorks.details.map((item: any) => (
-                            <>
-                                {
-                                    item.url ?
-                                    <img
-                                        src={ item.url }
-                                        onClick={ () => { onClickScreen(item.screen_id) } }/> : ''
-                                }
-                            </>
-                        ))
-                    }
-                    </div> : ''
-                }
-                <div className='pagination-test'>
-                    Pagination実装予定箇所
-                </div>
+                        <Pagination
+                            type={ PAGINATIONTYPE.WORKSDETAIL }
+                            items={props.selectWorks.details}
+                            onClickDetails={onClickScreen}
+                        />
+                    </div>
                 <div className='selected-screen-box'>
                     <img
                         src={ selectedDetail.screen_url }></img>

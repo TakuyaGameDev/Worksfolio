@@ -1,0 +1,53 @@
+.detailsGritWrapper{
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    margin-bottom: 1rem;
+    .wrapper-item {
+        margin-right: .5rem;
+        .box-img {
+            position: relative;
+            transition: all .3s;
+            margin-top: .5rem;
+            width: fit-content;
+            img {
+                width: 40%;
+                height: 30%;
+                border-radius: .5rem;
+                border: 2px solid #180614;
+                cursor: pointer;
+                opacity: 1;
+                transition: all .3s;
+            }
+            .show-nav-text {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                -webkit-transform: translate(-50%, -50%);
+                -ms-transform: translate(-50%, -50%);
+                color: white;
+                font-size: 2rem;
+                font-family: 'OrkneyRegular';
+                opacity: 0;
+                transition: all .3s;
+                cursor: pointer;
+                pointer-events: none;
+            }
+        }
+        .box-img.selected {
+            transform: scale(0);
+        }
+        .box-img:hover {
+            transition: all .3s;
+            opacity: .5;
+            scale: 101%;
+        }
+        .box-img:hover .show-nav-text {
+            opacity: .5;
+        }
+    }
+    :nth-child(4) {
+        margin-right: 0;
+    }
+}

@@ -2,11 +2,9 @@ import React,{ useEffect, useState } from 'react'
 import { PAGINATIONTYPE } from '../../enum/TYPES'
 
 import { getWorks } from '../../axios/worksAxios'
-
-import '../../styles/viewer.scss'
 import Pagination from './commons/Pagination'
 
-export const Viewer = React.memo((props:any) => {
+export const WorksViewer = React.memo((props:any) => {
 
   useEffect(() => {
     const getWorksInViewer = async() => {
@@ -20,10 +18,10 @@ export const Viewer = React.memo((props:any) => {
 
   return (
     <>
-        <div className='box-viewer'>
+        <div className='box-viewer__works'>
             <Pagination
               type={ PAGINATIONTYPE.WORKS }
-              works={props.works}
+              items={props.works}
               onClickWorks={props.onClickWorks}
             />
         </div>
@@ -31,4 +29,4 @@ export const Viewer = React.memo((props:any) => {
   )
 })
 
-export default Viewer
+export default WorksViewer

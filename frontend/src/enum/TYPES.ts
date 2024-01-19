@@ -9,5 +9,12 @@ export const MODALTYPE = {
 }
 
 export const PAGINATIONTYPE = {
-    WORKS: 1,
+    WORKS: {
+        type: 1,
+        perPage: 3,
+    },
+    WORKSDETAIL: {
+        type: 2,
+        perPage: 4,
+    },
 }
