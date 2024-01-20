@@ -1,0 +1,30 @@
+
+.detail-box {
+    display: flex;
+    justify-content: space-around;
+    padding: 2rem;
+    .left-pane {
+        font-size: 24px;
+        color: #455765;
+        font-family: 'Pacifico', cursive;
+        text-align: center;
+    }
+    .right-pane {
+        font-size: 24px;
+        color: #455765;
+        font-family: 'Pacifico', cursive;
+    }
+    .dli-chevron-down {
+        display: block;
+        color: #333;
+        line-height: 1;
+        width: .5em;
+        height: .5em;
+        border: 0.1em solid currentColor;
+        border-left: 0;
+        border-bottom: 0;
+        box-sizing: border-box;
+        transform: translateY(-25%) rotate(135deg);
+        margin: 0 auto;
+    }
+}

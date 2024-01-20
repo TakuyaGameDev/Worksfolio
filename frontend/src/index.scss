@@ -9,6 +9,12 @@ body {
   height: fit-content;
   position: relative;
 }
+body.allow-scroll {
+  overflow-y: auto;
+}
+body.no-scroll {
+  overflow-y: hidden;
+}
 
 #root {
   height: 100%;

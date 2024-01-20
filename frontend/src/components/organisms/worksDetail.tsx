@@ -21,7 +21,6 @@ export const WorksDetail = React.memo((props:any) => {
             screen_url: props.selectWorks.details.filter((detail: any) => detail.screen_id === selected)[0].url,
             descriptions: props.selectWorks.descriptions[selected]
         }
-        console.log(tmpDetail)
         setSelectedDetail(tmpDetail)
     }
 

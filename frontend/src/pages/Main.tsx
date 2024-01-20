@@ -2,7 +2,7 @@ import { useState, useEffect, useRef } from 'react'
 import { useInView } from 'react-intersection-observer'
 
 
-import { Works } from '../type'
+import { Works, AboutMe } from '../type'
 import PageTranditioner from '../components/molecules/commons/TransitionPage'
 import CommonHeader from '../components/molecules/commons/Header'
 import WorksViewer from '../components/molecules/WorksViewer'
@@ -21,6 +21,7 @@ function Main() {
   const [isOpenWorksDetailModal, setIsOpenWorksDetailModal] = useState<boolean>(false)
 
   const [works, setWorks] = useState<Works[]>([])
+  const [aboutmeInfo, setAboutmeInfo] = useState<AboutMe>()
   const [selectWorks, setSelectWorks] = useState<Works>()
   const user = getLocalStorageValue('user')
 
@@ -29,26 +30,36 @@ function Main() {
 
   useEffect(() => {
     selectType === SELECTTYPE.WORKS ?
-      worksBoxRef!.current!.scrollIntoView({
-      behavior: 'smooth',
-      block: 'start',
-    }) : 
+    scrollToWorks() : 
     selectType === SELECTTYPE.ABOUTME ? 
-    aboutmeRef!.current!.scrollIntoView({
-      behavior: 'smooth',
-      block: 'start',
-    }) : ''
+    scrollToAboutMe() : ''
   },[selectType])
 
   useEffect(() => {
-    
-  },[])
+    let bodyElem = document.getElementById("rootBody")
+    !isOpenWorksDetailModal ? bodyElem?.setAttribute('class','allow-scroll') : bodyElem?.setAttribute('class','no-scroll')
+  },[isOpenWorksDetailModal])
+
+  const scrollToWorks = () => {
+    worksBoxRef!.current!.scrollIntoView({
+      behavior: 'smooth',
+      block: 'start',
+    })
+  }
+
+  const scrollToAboutMe = () => {
+    aboutmeRef!.current!.scrollIntoView({
+      behavior: 'smooth',
+      block: 'start',
+    })
+  }
 
   const changeSelectType = (type: number) => {
     setSelectType(type)
   }
 
   const onClickWorks = (worksId: number) => {
+    scrollToWorks()
     const result = works.filter( works => works.id === worksId)
     setSelectWorks(result[0])
     setIsOpenWorksDetailModal(true)
@@ -80,7 +91,10 @@ function Main() {
         </div>
         <div ref={aboutmeRef}></div>
         <div className='aboutme-box'>
-          <AboutMeViewer />
+          <AboutMeViewer 
+            setAboutMe={setAboutmeInfo}
+            info={aboutmeInfo}
+          />
         </div> 
         <Modal
           selectWorks={ selectWorks }

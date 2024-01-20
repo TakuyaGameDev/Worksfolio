@@ -7,3 +7,10 @@ export type Works = {
    details: Object
    descriptions: Object
 }
+
+export type AboutMe = {
+   id: number
+   career: Object
+   skills: Object
+   certificates: Object
+}

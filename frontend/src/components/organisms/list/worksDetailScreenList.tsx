@@ -13,7 +13,6 @@ const worksDetailScreenList = React.memo((props: any) => {
                 :
                 details.map((item: any) => (
                     <>
-                        { console.log(item) }
                         <div key={ item.screen_id } className='wrapper-item'>
                             <figure className='box-img'>
                                 {

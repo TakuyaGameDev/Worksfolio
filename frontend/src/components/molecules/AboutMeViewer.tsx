@@ -1,9 +1,18 @@
 import React,{ useEffect, useState } from 'react'
-import { PAGINATIONTYPE } from '../../enum/TYPES'
+import AboutMeDetail from '../organisms/aboutmeDetail'
+
+import { get } from '../../axios/aboutmeAxios'
 
 export const AboutMeViewer = React.memo((props:any) => {
 
   useEffect(() => {
+    const getAboutmeInViewer = async() => {
+      console.log('getWorks')
+        const res = await get()
+        console.log(res.data[0])
+        props.setAboutMe(res.data[0])
+    }
+    getAboutmeInViewer()
   },[])
 
   return (
@@ -13,7 +22,9 @@ export const AboutMeViewer = React.memo((props:any) => {
               About me.
             </div>
             <div className='contents'>
-              
+              <AboutMeDetail
+                items={props.info}
+              />
             </div>
         </div>
     </>
