@@ -9,7 +9,12 @@ export const AboutMeViewer = React.memo((props:any) => {
   return (
     <>
         <div className='box-viewer__aboutme'>
-            aboutMeViewer
+            <div className='title'>
+              About me.
+            </div>
+            <div className='contents'>
+              
+            </div>
         </div>
     </>
   )

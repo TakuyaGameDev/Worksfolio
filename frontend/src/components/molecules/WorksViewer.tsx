@@ -19,6 +19,9 @@ export const WorksViewer = React.memo((props:any) => {
   return (
     <>
         <div className='box-viewer__works'>
+          <div className='title'>
+            Works.
+          </div>
             <Pagination
               type={ PAGINATIONTYPE.WORKS }
               items={props.works}

@@ -1,4 +1,6 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
+import { useInView } from 'react-intersection-observer'
+
 
 import { Works } from '../type'
 import PageTranditioner from '../components/molecules/commons/TransitionPage'
@@ -22,6 +24,26 @@ function Main() {
   const [selectWorks, setSelectWorks] = useState<Works>()
   const user = getLocalStorageValue('user')
 
+  const worksBoxRef = useRef<HTMLDivElement>(null)
+  const aboutmeRef = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    selectType === SELECTTYPE.WORKS ?
+      worksBoxRef!.current!.scrollIntoView({
+      behavior: 'smooth',
+      block: 'start',
+    }) : 
+    selectType === SELECTTYPE.ABOUTME ? 
+    aboutmeRef!.current!.scrollIntoView({
+      behavior: 'smooth',
+      block: 'start',
+    }) : ''
+  },[selectType])
+
+  useEffect(() => {
+    
+  },[])
+
   const changeSelectType = (type: number) => {
     setSelectType(type)
   }
@@ -39,31 +61,33 @@ function Main() {
   return (
     <>
       <PageTranditioner loginUser={ user } />
-      <CommonHeader
-        selectType={ selectType } 
-        changeFunc={ changeSelectType }
-      />
+      <div
+        className='header'
+        ref={ worksBoxRef }
+      >
+        <CommonHeader
+          selectType={ selectType } 
+          changeFunc={ changeSelectType }
+        />
+      </div>
       <div className='container-main'>
-        {
-          selectType === SELECTTYPE.WORKS ?
-          <div className='works-box'>
-            <WorksViewer
-              setWorks={ setWorks }
-              works={ works }
-              onClickWorks={ onClickWorks }
-            />
-          </div> : 
-          selectType === SELECTTYPE.ABOUTME ?
-          <div className='aboutme-box'>
-            <AboutMeViewer />
-          </div> : ''
-        }
-          <Modal
-            selectWorks={ selectWorks }
-            isOpen={isOpenWorksDetailModal}
-            onClickClose={ onClickCloseWorksDetailModal }
-            type={ MODALTYPE.WORKSDETAIL }
+        <div className='works-box'>
+          <WorksViewer
+            setWorks={ setWorks }
+            works={ works }
+            onClickWorks={ onClickWorks }
           />
+        </div>
+        <div ref={aboutmeRef}></div>
+        <div className='aboutme-box'>
+          <AboutMeViewer />
+        </div> 
+        <Modal
+          selectWorks={ selectWorks }
+          isOpen={isOpenWorksDetailModal}
+          onClickClose={ onClickCloseWorksDetailModal }
+          type={ MODALTYPE.WORKSDETAIL }
+        />
       </div>
     </>
   )

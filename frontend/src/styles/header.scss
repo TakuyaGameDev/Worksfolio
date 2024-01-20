@@ -3,7 +3,7 @@
     height: auto;
     width: auto;
     color: #455765;
-    padding-top: 4rem;
+    padding-top: 1rem;
     // Login機能は使用しない
     // .btn-login {
     //     text-align: right;
@@ -32,6 +32,10 @@
     // }
     .box-title {
         position: relative;
+        position: fixed;
+        top: 1rem;
+        left: 50%;
+        z-index: 999;
         .search-user-box {
             position: absolute;
             top: 50%;
@@ -148,17 +152,15 @@
         }
         .title {
             position: absolute;
-            top: 50%;
-            left: 50%;
+            top: 20%;
             transform: translate(-50%);
             font-family: 'Pacifico', cursive;
             font-size: 2rem;
         }
         .sub-title {
-            position: absolute;
+            // position: absolute;
             display: flex;
-            top: 50%;
-            right: 18%;
+            margin-left: 15rem;
             a {
                 display: block;
                 cursor: pointer;

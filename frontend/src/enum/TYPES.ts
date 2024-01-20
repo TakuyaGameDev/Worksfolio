@@ -11,7 +11,7 @@ export const MODALTYPE = {
 export const PAGINATIONTYPE = {
     WORKS: {
         type: 1,
-        perPage: 3,
+        perPage: 6,
     },
     WORKSDETAIL: {
         type: 2,
