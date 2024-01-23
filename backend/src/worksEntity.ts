@@ -1,7 +1,7 @@
 import { sqlExecuter, createParams } from "./database";
 
 export const getWorks = async (res: any) => {
-    const query = "select id, title, image_url, site_url, dev_periods, descriptions, details from works order by id asc";
+    const query = "select id, title, image_url, site_url, dev_periods, descriptions, details, dev_environment from works order by id asc";
     let message = ""
     let status = -1
     const data = await sqlExecuter.any(query)

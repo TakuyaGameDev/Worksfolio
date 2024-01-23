@@ -32,6 +32,16 @@ export const WorksDetail = React.memo((props:any) => {
         setSelectedDetail(tmpDetail)
     }
 
+    const ennvironment = () => {
+        const items:any[] = []
+        props.selectWorks?.dev_environment?.forEach((item: string) => {
+            items.push(
+                <div className='item-env'>・ { item }</div>
+            )
+        })
+        return items
+    }
+
     useEffect(() => {
         resetDetail()
     },[props.selectWorks,props.isClose])
@@ -47,6 +57,12 @@ export const WorksDetail = React.memo((props:any) => {
                     <div className='dev-periods'>
                         <div className='label'>開発期間</div>
                         <span>{props.selectWorks.dev_periods['from']} ~ {props.selectWorks.dev_periods['to']}</span>
+                    </div>
+                    <div className='dev-environment'>
+                        <div className='label'>使用言語など</div>
+                        {
+                            ennvironment()
+                        }
                     </div>
                     <div className='descriptions'>
                         <div className='label'>各画面での実装詳細</div>

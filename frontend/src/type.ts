@@ -6,6 +6,7 @@ export type Works = {
    dev_periods: Object
    details: Object
    descriptions: Object
+   dev_environment: string[]
 }
 
 export type AboutMe = {

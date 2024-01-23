@@ -15,7 +15,10 @@ export const AboutMeDetail = React.memo((props:any) => {
                 <div className='contents'>
                     {
                         props.items?.career?.map((item: any) => (
-                            <div>{item.content}</div>
+                            <>
+                                <div className='date'>{item.date}</div>
+                                <div className='content' style={{ whiteSpace:'pre-wrap' }}>{item.content}</div>
+                            </>
                         ))
                     }
                 </div>
@@ -25,7 +28,7 @@ export const AboutMeDetail = React.memo((props:any) => {
                 <div className='contents'>
                     {
                         props.items?.skills['languages']?.map((item: any) => (
-                            <div>{item}</div>
+                            <div className='item'>{item}</div>
                         ))
                     }
                 </div>
