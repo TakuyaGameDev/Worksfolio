@@ -13,9 +13,9 @@ const Pagination = React.memo((props:any) => {
     const { items } = props
 
     useEffect(() => {
-        console.log(items)
+        console.log('details open')
         setItemsOffset(0)
-    },[items])
+    },[items,props.isShowDetailModal])
 
     const itemsPerPage = props.type.perPage
     const [itemsOffset, setItemsOffset] = useState<number>(0)

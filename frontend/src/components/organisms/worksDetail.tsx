@@ -81,6 +81,7 @@ export const WorksDetail = React.memo((props:any) => {
                             type={ PAGINATIONTYPE.WORKSDETAIL }
                             items={props.selectWorks.details}
                             onClickDetails={onClickScreen}
+                            isShowDetailModal={props.isClose}
                         />
                     </div>
                 <div className='selected-screen-box'>

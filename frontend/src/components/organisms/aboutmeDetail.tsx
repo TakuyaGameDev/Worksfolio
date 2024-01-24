@@ -10,7 +10,30 @@ export const AboutMeDetail = React.memo((props:any) => {
   return (
     <>
         <div className='detail-box'>
-            <div className='left-pane'>
+            <div className='career-box'>
+                Career<span className="dli-chevron-down"></span>
+                <div className='contents'>
+                    {
+                        props.items?.career?.map((item: any) => (
+                            <>
+                                <div className='date'>{item.date}</div>
+                                <div className='content' style={{ whiteSpace:'pre-wrap' }}>{item.content}</div>
+                            </>
+                        ))
+                    }
+                </div>
+            </div>
+            <div className='skills-box'>
+                Skills & Certificates<span className="dli-chevron-down"></span>
+                <div className='contents'>
+                    {
+                        props.items?.skills['languages']?.map((item: any) => (
+                            <div className='item'>{item}</div>
+                        ))
+                    }
+                </div>
+            </div>
+            {/* <div className='left-pane'>
                 Career<span className="dli-chevron-down"></span>
                 <div className='contents'>
                     {
@@ -32,7 +55,7 @@ export const AboutMeDetail = React.memo((props:any) => {
                         ))
                     }
                 </div>
-            </div>
+            </div> */}
         </div>
     </>
   )

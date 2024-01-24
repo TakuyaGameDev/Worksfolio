@@ -1,38 +1,16 @@
 
 .detail-box {
     display: flex;
+    flex-direction: column;
     padding: 2rem;
-    .left-pane {
-        width: 42%;
-        font-size: 24px;
-        color: #455765;
-        font-family: 'Pacifico', cursive;
-        text-align: center;
-        margin-left: 15%;
-        .contents {
-            padding: 3%;
-            font-family: "Klee One", cursive;
-            font-size: 16px;
-            .date {
-                margin-bottom: .5%;
-            }
-            .content {
-                margin-bottom: 2%;
-            }
-        }
-    }
-    .right-pane {
-        font-size: 24px;
-        color: #455765;
-        font-family: 'Pacifico', cursive;
-        margin-left: 10%;
-        .contents {
-            padding: 10%;
-            font-family: "Klee One", cursive;
-            font-size: 16px;
-            .item {
-                margin-bottom: 2%;
-            }
+    justify-content: center;
+    font-family: 'Pacifico', cursive;
+    font-size: 24px;
+    .contents {
+        padding: 2%;
+        font-family: "Klee One", cursive;
+        .content {
+            margin-bottom: 2%;
         }
     }
     .dli-chevron-down {
