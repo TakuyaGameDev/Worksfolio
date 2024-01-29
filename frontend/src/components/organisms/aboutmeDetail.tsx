@@ -1,11 +1,26 @@
 import React,{ useEffect, useState } from 'react'
+import {RadarChart, Radar, PolarGrid, PolarAngleAxis, PolarRadiusAxis, Legend} from 'recharts'
 import '../../styles/aboutmeDetail.scss'
 
 export const AboutMeDetail = React.memo((props:any) => {
 
   useEffect(() => {
-    console.log(props.items?.career)
+    console.log("items")
+    console.log(props.items?.skills)
+    skillsData()
   },[props.items])
+
+  const skillsData = () => {
+    const data: Object[] = []
+    props.items?.skills['languages'].forEach((skill: any) => {
+        data.push({
+            subject: skill.name,
+            A: skill.level,
+            fullMark: 5
+        })
+    })
+    return data
+  }
 
   return (
     <>
@@ -26,11 +41,15 @@ export const AboutMeDetail = React.memo((props:any) => {
             <div className='skills-box'>
                 Skills & Certificates<span className="dli-chevron-down"></span>
                 <div className='contents'>
-                    {
-                        props.items?.skills['languages']?.map((item: any) => (
-                            <div className='item'>{item}</div>
-                        ))
-                    }
+                    <div className='languages'>
+                        <RadarChart outerRadius={90} width={730} height={250} data={skillsData()}>
+                            <PolarGrid />
+                            <PolarAngleAxis dataKey="subject" />
+                            <PolarRadiusAxis angle={90} domain={[0,5]} />
+                            <Radar name="Mike" dataKey="A" stroke="#8884d8" fill="#8884d8" fillOpacity={0.6} />
+                            <Legend />
+                        </RadarChart>
+                    </div>
                 </div>
             </div>
             {/* <div className='left-pane'>

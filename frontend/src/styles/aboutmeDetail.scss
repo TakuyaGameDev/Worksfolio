@@ -6,11 +6,21 @@
     justify-content: center;
     font-family: 'Pacifico', cursive;
     font-size: 24px;
-    .contents {
-        padding: 2%;
-        font-family: "Klee One", cursive;
-        .content {
-            margin-bottom: 2%;
+    .career-box {
+        .contents {
+            padding: 2%;
+            font-family: "Klee One", cursive;
+            .content {
+                margin-bottom: 2%;
+            }
+        }
+    }
+    .skills-box {
+        .contents {
+            padding: .5rem;
+            .languages {
+                width: fit-content;
+            }
         }
     }
     .dli-chevron-down {
