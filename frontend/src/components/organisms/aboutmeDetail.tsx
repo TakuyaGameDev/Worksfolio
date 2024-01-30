@@ -1,5 +1,5 @@
 import React,{ useEffect, useState } from 'react'
-import {RadarChart, Radar, PolarGrid, PolarAngleAxis, PolarRadiusAxis, Legend} from 'recharts'
+import {ComposedChart, XAxis, YAxis, Tooltip, CartesianGrid, Bar} from 'recharts'
 import '../../styles/aboutmeDetail.scss'
 
 export const AboutMeDetail = React.memo((props:any) => {
@@ -7,19 +7,47 @@ export const AboutMeDetail = React.memo((props:any) => {
   useEffect(() => {
     console.log("items")
     console.log(props.items?.skills)
-    skillsData()
   },[props.items])
 
-  const skillsData = () => {
+  const skillsData = (key: string) => {
     const data: Object[] = []
-    props.items?.skills['languages'].forEach((skill: any) => {
-        data.push({
-            subject: skill.name,
-            A: skill.level,
-            fullMark: 5
-        })
+    props.items?.skills[key].forEach((skill: any) => {
+        data.push({ name: skill.name, "level": skill.level })
     })
     return data
+  }
+
+  const skillsBar = (key: string) => {
+    return (
+        <ComposedChart
+            width={600}
+            height={280}
+            layout="vertical"
+            data={skillsData(key)}
+            margin={{ top: 20, right: 10, bottom: 0, left: 40}}
+        >
+            <XAxis
+                type="number"
+                domain={[0, 5]}
+                interval={0}
+            />
+            <YAxis
+                type="category"
+                dataKey="name"
+            />
+            <Tooltip />
+            <CartesianGrid
+                stroke="#f5f5f5"
+            /> 
+            <Bar
+                dataKey="level"
+                barSize={20}
+                stroke="mediumseagreen"
+                fillOpacity={0.6}
+                fill="mediumseagreen"
+            />
+        </ComposedChart>
+    )
   }
 
   return (
@@ -42,39 +70,25 @@ export const AboutMeDetail = React.memo((props:any) => {
                 Skills & Certificates<span className="dli-chevron-down"></span>
                 <div className='contents'>
                     <div className='languages'>
-                        <RadarChart outerRadius={90} width={730} height={250} data={skillsData()}>
-                            <PolarGrid />
-                            <PolarAngleAxis dataKey="subject" />
-                            <PolarRadiusAxis angle={90} domain={[0,5]} />
-                            <Radar name="Mike" dataKey="A" stroke="#8884d8" fill="#8884d8" fillOpacity={0.6} />
-                            <Legend />
-                        </RadarChart>
+                        <div className='label'>
+                            LANGUAGES
+                        </div>
+                        { skillsBar('languages') }
+                    </div>
+                    <div className='db'>
+                        <div className='label'>
+                            DB
+                        </div>
+                        { skillsBar('DB') }
+                    </div>
+                    <div className='os'>
+                        <div className='label'>
+                            OS
+                        </div>
+                        { skillsBar('OS') }
                     </div>
                 </div>
             </div>
-            {/* <div className='left-pane'>
-                Career<span className="dli-chevron-down"></span>
-                <div className='contents'>
-                    {
-                        props.items?.career?.map((item: any) => (
-                            <>
-                                <div className='date'>{item.date}</div>
-                                <div className='content' style={{ whiteSpace:'pre-wrap' }}>{item.content}</div>
-                            </>
-                        ))
-                    }
-                </div>
-            </div>
-            <div className='right-pane'>
-                Skills & Certificates<span className="dli-chevron-down"></span>
-                <div className='contents'>
-                    {
-                        props.items?.skills['languages']?.map((item: any) => (
-                            <div className='item'>{item}</div>
-                        ))
-                    }
-                </div>
-            </div> */}
         </div>
     </>
   )

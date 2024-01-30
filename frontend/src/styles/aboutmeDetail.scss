@@ -17,9 +17,12 @@
     }
     .skills-box {
         .contents {
-            padding: .5rem;
-            .languages {
-                width: fit-content;
+            padding: 2rem;
+            display: flex;
+            font-family: "Klee One", cursive;
+            font-size: 15px;
+            .label {
+                font-family: 'OrkneyRegular';
             }
         }
     }
