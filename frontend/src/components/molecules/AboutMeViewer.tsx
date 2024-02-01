@@ -22,9 +22,12 @@ export const AboutMeViewer = React.memo((props:any) => {
               About me.
             </div>
             <div className='contents'>
-              <AboutMeDetail
-                items={props.info}
-              />
+              {
+                props.info ? 
+                <AboutMeDetail
+                  items={props.info}
+                /> : ''
+              }
             </div>
         </div>
     </>

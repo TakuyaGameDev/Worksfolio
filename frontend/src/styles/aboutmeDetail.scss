@@ -17,12 +17,47 @@
     }
     .skills-box {
         .contents {
-            padding: 2rem;
             display: flex;
-            font-family: "Klee One", cursive;
-            font-size: 15px;
-            .label {
-                font-family: 'OrkneyRegular';
+            font-family: 'OrkneyRegular';
+            .left-pane {
+                width: 70%;
+                display: flex;
+                justify-content: space-around;
+                flex-wrap: wrap;
+                padding: 2rem;
+                font-size: 15px;
+                .label {
+                    background-color: #80989b;
+                    border-radius: 2rem;
+                    font-weight: bold;
+                    color: white;
+                }
+                :nth-child(3),:nth-child(4){
+                    margin-top: 1rem;
+                }
+            }
+            .right-pane {
+                width: 30%;
+                padding-top: 2rem;
+                font-size: 15px;
+                .label {
+                    background-color: #80989b;
+                    border-radius: 2rem;
+                    font-weight: bold;
+                    color: white;
+                }
+                .etc {
+                    padding: .5rem;
+                    height: 45.4%;
+                    overflow: auto;
+                    text-align: left;
+                }
+                .certificates {
+                    padding: .5rem;
+                    height: 40%;
+                    overflow: auto;
+                    text-align: left;
+                }
             }
         }
     }

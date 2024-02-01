@@ -6,7 +6,9 @@ export const AboutMeDetail = React.memo((props:any) => {
 
   useEffect(() => {
     console.log("items")
-    console.log(props.items?.skills)
+    props.items.skills.etc.map((skill: string) => {
+        console.log(skill)
+    })
   },[props.items])
 
   const skillsData = (key: string) => {
@@ -16,6 +18,7 @@ export const AboutMeDetail = React.memo((props:any) => {
     })
     return data
   }
+
 
   const skillsBar = (key: string) => {
     return (
@@ -50,6 +53,21 @@ export const AboutMeDetail = React.memo((props:any) => {
     )
   }
 
+  const dataString = (key: string) => {
+        const item: any[] = []
+        {
+            key === 'etc' ?
+            props.items.skills.etc.map((skill: string) => {
+                item.push(<div>■ { skill }</div>)
+            }) :
+            key === 'certificates' ?
+            props.items.certificates.map((certificate: string) => {
+                item.push(<div>■ { certificate }</div>)
+            }) : ''
+        }
+        return item
+    }
+
   return (
     <>
         <div className='detail-box'>
@@ -69,23 +87,41 @@ export const AboutMeDetail = React.memo((props:any) => {
             <div className='skills-box'>
                 Skills & Certificates<span className="dli-chevron-down"></span>
                 <div className='contents'>
-                    <div className='languages'>
-                        <div className='label'>
-                            LANGUAGES
+                    <div className='left-pane'>
+                        <div className='languages'>
+                            <div className='label'>
+                                LANGUAGES
+                            </div>
+                            { skillsBar('languages') }
                         </div>
-                        { skillsBar('languages') }
+                        <div className='frameworks'>
+                            <div className='label'>
+                                FRAMEWORKS
+                            </div>
+                            { skillsBar('frameworks') }
+                        </div>
+                        <div className='db'>
+                            <div className='label'>
+                                DB
+                            </div>
+                            { skillsBar('DB') }
+                        </div>
+                        <div className='os'>
+                            <div className='label'>
+                                OS
+                            </div>
+                            { skillsBar('OS') }
+                        </div>
                     </div>
-                    <div className='db'>
-                        <div className='label'>
-                            DB
+                    <div className='right-pane'>
+                        <div className='label'>Experienced tools & etc...</div>
+                        <div className='etc'>  
+                            { dataString('etc') }
                         </div>
-                        { skillsBar('DB') }
-                    </div>
-                    <div className='os'>
-                        <div className='label'>
-                            OS
+                        <div className='label'>Certificates</div>
+                        <div className='certificates'>
+                            { dataString('certificates') }
                         </div>
-                        { skillsBar('OS') }
                     </div>
                 </div>
             </div>
